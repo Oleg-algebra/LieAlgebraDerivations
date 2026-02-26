@@ -1,0 +1,7 @@
+name = "LieDerivations"
+uuid = "fc959d26-e430-4afe-b883-5bba3fda1f0b"
+authors = ["Oleg Tyshchenko"]
+version = "1.0.0-DEV"
+
+[compat]
+julia = "1.10"

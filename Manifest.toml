@@ -1,0 +1,10 @@
+# This file is machine-generated - editing it directly is not advised
+
+julia_version = "1.12.5"
+manifest_format = "2.0"
+project_hash = "778d17f16393ed4599a0bf49428c7deb1dc3a078"
+
+[[deps.LieDerivations]]
+path = "."
+uuid = "fc959d26-e430-4afe-b883-5bba3fda1f0b"
+version = "1.0.0-DEV"
