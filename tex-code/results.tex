@@ -1,0 +1,32 @@
+% !TeX root = main.tex
+\noindent\textit{Час обчислення: 5.117 сек.}\\
+% Розрахунок виконано: 2026-02-27 22:43:41
+
+\section*{Централізатор для диференціювання}
+\begin{equation*}
+  D = \left( y \right) \frac{\partial}{\partial x} + \left( x \right) \frac{\partial}{\partial y}
+\end{equation*}
+Шукаємо централізатор у просторі поліномів до степеня $k = 15$.
+\vspace{1em}
+
+\textbf{Базис централізатора:}
+\begin{itemize}
+  \item $ D_{u_{1}} = \left( x \right) \frac{\partial}{\partial x} + \left( y \right) \frac{\partial}{\partial y} $
+  \item $ D_{u_{2}} = \left( y \right) \frac{\partial}{\partial x} + \left( x \right) \frac{\partial}{\partial y} $
+  \item $ D_{u_{3}} = \left( x^{3} - y^{2} ~ x \right) \frac{\partial}{\partial x} + \left( x^{2} ~ y - y^{3} \right) \frac{\partial}{\partial y} $
+  \item $ D_{u_{4}} = \left( x^{2} ~ y - y^{3} \right) \frac{\partial}{\partial x} + \left( x^{3} - y^{2} ~ x \right) \frac{\partial}{\partial y} $
+  \item $ D_{u_{5}} = \left( x^{5} - 2 ~ y^{2} ~ x^{3} + y^{4} ~ x \right) \frac{\partial}{\partial x} + \left( x^{4} ~ y - 2 ~ y^{3} ~ x^{2} + y^{5} \right) \frac{\partial}{\partial y} $
+  \item $ D_{u_{6}} = \left( x^{4} ~ y - 2 ~ y^{3} ~ x^{2} + y^{5} \right) \frac{\partial}{\partial x} + \left( x^{5} - 2 ~ y^{2} ~ x^{3} + y^{4} ~ x \right) \frac{\partial}{\partial y} $
+  \item $ D_{u_{7}} = \left( x^{7} - 3 ~ y^{2} ~ x^{5} + 3 ~ y^{4} ~ x^{3} - y^{6} ~ x \right) \frac{\partial}{\partial x} + \left( x^{6} ~ y - 3 ~ y^{3} ~ x^{4} + 3 ~ y^{5} ~ x^{2} - y^{7} \right) \frac{\partial}{\partial y} $
+  \item $ D_{u_{8}} = \left( x^{6} ~ y - 3 ~ y^{3} ~ x^{4} + 3 ~ y^{5} ~ x^{2} - y^{7} \right) \frac{\partial}{\partial x} + \left( x^{7} - 3 ~ y^{2} ~ x^{5} + 3 ~ y^{4} ~ x^{3} - y^{6} ~ x \right) \frac{\partial}{\partial y} $
+  \item $ D_{u_{9}} = \left( x^{9} - 4 ~ y^{2} ~ x^{7} + 6 ~ y^{4} ~ x^{5} - 4 ~ y^{6} ~ x^{3} + y^{8} ~ x \right) \frac{\partial}{\partial x} + \left( x^{8} ~ y - 4 ~ y^{3} ~ x^{6} + 6 ~ y^{5} ~ x^{4} - 4 ~ y^{7} ~ x^{2} + y^{9} \right) \frac{\partial}{\partial y} $
+  \item $ D_{u_{10}} = \left( x^{8} ~ y - 4 ~ y^{3} ~ x^{6} + 6 ~ y^{5} ~ x^{4} - 4 ~ y^{7} ~ x^{2} + y^{9} \right) \frac{\partial}{\partial x} + \left( x^{9} - 4 ~ y^{2} ~ x^{7} + 6 ~ y^{4} ~ x^{5} - 4 ~ y^{6} ~ x^{3} + y^{8} ~ x \right) \frac{\partial}{\partial y} $
+  \item $ D_{u_{11}} = \left( x^{11} - 5 ~ y^{2} ~ x^{9} + 10 ~ y^{4} ~ x^{7} - 10 ~ y^{6} ~ x^{5} + 5 ~ y^{8} ~ x^{3} - y^{10} ~ x \right) \frac{\partial}{\partial x} + \left( x^{10} ~ y - 5 ~ y^{3} ~ x^{8} + 10 ~ y^{5} ~ x^{6} - 10 ~ y^{7} ~ x^{4} + 5 ~ y^{9} ~ x^{2} - y^{11} \right) \frac{\partial}{\partial y} $
+  \item $ D_{u_{12}} = \left( x^{10} ~ y - 5 ~ y^{3} ~ x^{8} + 10 ~ y^{5} ~ x^{6} - 10 ~ y^{7} ~ x^{4} + 5 ~ y^{9} ~ x^{2} - y^{11} \right) \frac{\partial}{\partial x} + \left( x^{11} - 5 ~ y^{2} ~ x^{9} + 10 ~ y^{4} ~ x^{7} - 10 ~ y^{6} ~ x^{5} + 5 ~ y^{8} ~ x^{3} - y^{10} ~ x \right) \frac{\partial}{\partial y} $
+  \item $ D_{u_{13}} = \left( x^{13} - 6 ~ y^{2} ~ x^{11} + 15 ~ y^{4} ~ x^{9} - 20 ~ y^{6} ~ x^{7} + 15 ~ y^{8} ~ x^{5} - 6 ~ y^{10} ~ x^{3} + y^{12} ~ x \right) \frac{\partial}{\partial x} + \left( x^{12} ~ y - 6 ~ y^{3} ~ x^{10} + 15 ~ y^{5} ~ x^{8} - 20 ~ y^{7} ~ x^{6} + 15 ~ y^{9} ~ x^{4} - 6 ~ y^{11} ~ x^{2} + y^{13} \right) \frac{\partial}{\partial y} $
+  \item $ D_{u_{14}} = \left( x^{12} ~ y - 6 ~ y^{3} ~ x^{10} + 15 ~ y^{5} ~ x^{8} - 20 ~ y^{7} ~ x^{6} + 15 ~ y^{9} ~ x^{4} - 6 ~ y^{11} ~ x^{2} + y^{13} \right) \frac{\partial}{\partial x} + \left( x^{13} - 6 ~ y^{2} ~ x^{11} + 15 ~ y^{4} ~ x^{9} - 20 ~ y^{6} ~ x^{7} + 15 ~ y^{8} ~ x^{5} - 6 ~ y^{10} ~ x^{3} + y^{12} ~ x \right) \frac{\partial}{\partial y} $
+  \item $ D_{u_{15}} = \left( x^{15} - 7 ~ y^{2} ~ x^{13} + 21 ~ y^{4} ~ x^{11} - 35 ~ y^{6} ~ x^{9} + 35 ~ y^{8} ~ x^{7} - 21 ~ y^{10} ~ x^{5} + 7 ~ y^{12} ~ x^{3} - y^{14} ~ x \right) \frac{\partial}{\partial x} + \left( x^{14} ~ y - 7 ~ y^{3} ~ x^{12} + 21 ~ y^{5} ~ x^{10} - 35 ~ y^{7} ~ x^{8} + 35 ~ y^{9} ~ x^{6} - 21 ~ y^{11} ~ x^{4} + 7 ~ y^{13} ~ x^{2} - y^{15} \right) \frac{\partial}{\partial y} $
+  \item $ D_{u_{16}} = \left( x^{14} ~ y - 7 ~ y^{3} ~ x^{12} + 21 ~ y^{5} ~ x^{10} - 35 ~ y^{7} ~ x^{8} + 35 ~ y^{9} ~ x^{6} - 21 ~ y^{11} ~ x^{4} + 7 ~ y^{13} ~ x^{2} - y^{15} \right) \frac{\partial}{\partial x} + \left( x^{15} - 7 ~ y^{2} ~ x^{13} + 21 ~ y^{4} ~ x^{11} - 35 ~ y^{6} ~ x^{9} + 35 ~ y^{8} ~ x^{7} - 21 ~ y^{10} ~ x^{5} + 7 ~ y^{12} ~ x^{3} - y^{14} ~ x \right) \frac{\partial}{\partial y} $
+\end{itemize}
+\hrule\vspace{2em}
+
