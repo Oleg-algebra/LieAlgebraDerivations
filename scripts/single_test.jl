@@ -14,7 +14,7 @@ vars = [x, y]
 
 # Вставте тут ваше диференціювання D
 # Приклад: D = x^2 * ∂/∂x + y^2 * ∂/∂y
-D_orig = Derivation([x^5 ,y^5], vars) 
+D_orig = Derivation([y^2,x^2 ], vars) 
 
 max_deg = 10  # Максимальний степінь для пошуку
 filename = "tex-code/centralizer_report.tex" # Шлях до файлу звіту
@@ -33,13 +33,13 @@ println("Обчислення завершено за $(round(t_exec, digits=2))
 # Можна обрати res_type = "min" або "max"
 println("Генерація LaTeX звіту ($filename)...")
 
-if !isempty(res_data)
+if !isempty(res_data.all_res)
     Reports.generate_latex_report(
-        res_data, 
+        res_data.all_res, 
         D_orig, 
         vars, 
         filename; 
-        res_type = "max"
+        res_type = "min"
     )
     println(">>> Звіт успішно збережено.")
 else

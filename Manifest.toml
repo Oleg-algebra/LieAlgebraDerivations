@@ -2,7 +2,7 @@
 
 julia_version = "1.12.5"
 manifest_format = "2.0"
-project_hash = "3e196cb095385a97a98c32d16a8d661e7a28758f"
+project_hash = "746687a8f72ff847d7296aa6572d0cfe4950c6f2"
 
 [[deps.ADTypes]]
 git-tree-sha1 = "f7304359109c768cf32dc5fa2d371565bb63b68a"
@@ -400,7 +400,7 @@ uuid = "94ce4f54-9a6c-5748-9c1c-f9c7231a4531"
 version = "1.18.0+0"
 
 [[deps.LieDerivations]]
-deps = ["BenchmarkTools", "Dates", "LaTeXStrings", "Latexify", "LinearAlgebra", "RowEchelon", "SparseArrays", "StaticArrays", "Symbolics"]
+deps = ["BenchmarkTools", "Dates", "LaTeXStrings", "Latexify", "LinearAlgebra", "MPI", "RowEchelon", "SparseArrays", "StaticArrays", "Symbolics"]
 path = "."
 uuid = "fc959d26-e430-4afe-b883-5bba3fda1f0b"
 version = "1.0.0-DEV"

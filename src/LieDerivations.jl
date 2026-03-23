@@ -6,8 +6,9 @@ using SparseArrays
 using RowEchelon
 
 include("Reports.jl")
+include("ParallelSearch.jl")
 
-export Reports,Derivation, apply_derivation, lie_bracket, solve_centralizer
+export Reports, ParallelSearch, Derivation, apply_derivation, lie_bracket, solve_centralizer
 
 # Структура для диференціювання в W_n(K)
 struct Derivation
@@ -164,9 +165,33 @@ function exact_sparse_nullspace(A::SparseMatrixCSC{T}) where T <: Rational
 
 end
     
+function get_derivation_degree(D_obj)
+    # Функція для отримання степеня окремого полінома
+    poly_deg(p) = (p isa Number) ? 0 : Symbolics.degree(p)
+    
+    d1 = poly_deg(D_obj.polys[1])
+    d2 = poly_deg(D_obj.polys[2])
+    return max(d1, d2)
+end
+
+function is_already_found(new_polys, current_k, all_found)
+    for existing in all_found
+        # Перевірка на пропорційність через перехресне множення
+        diff = simplify(new_polys[1] * existing.polys[2] - new_polys[2] * existing.polys[1])
+        
+        if iszero(diff)
+            # Якщо пропорційні і степінь не більший за вже знайдений — це дублікат
+            if current_k <= existing.degree
+                return true
+            end
+        end
+    end
+    return false
+end
 
 
 function solve_centralizer(D::Derivation, max_deg::Int)
+    d_orig_deg = get_derivation_degree(D)
     vars = D.vars
     n = length(vars)
     k = 0 
@@ -276,17 +301,23 @@ function solve_centralizer(D::Derivation, max_deg::Int)
 
                 is_interesting = !proportional
 
-                # Додаємо у список тільки валідні та нетривіальні розв'язки
-                push!(all_found, (
-                    degree = k, 
-                    polys = final_polys, 
-                    is_interesting = !proportional,
-                    is_valid = true
-                ))
+                if !is_already_found(final_polys, k, all_found)
+                    # Перевіряємо, чи це тривіальне кратне (той самий степінь, що у D_orig)
+                    # або це щось нове (вищий степінь або непропорційне)
+                    
+                    is_base_D = (k == d_orig_deg) && !is_already_found(final_polys, k, [(polys=D.polys, degree=d_orig_deg)])
+
+                    push!(all_found, (
+                        degree = k, 
+                        polys = final_polys, 
+                        is_interesting = !proportional,     # Справжні комутатори
+                        is_invariant = proportional && (k > d_orig_deg), # Інваріанти f*D
+                        is_valid = true
+                    ))
+                end
                 
                 
-                status_type = !proportional ? "НЕ ПРОПОРЦІЙНИЙ" : "пропорційний"
-                println("--> Збережено валідний $status_type розв'язок степеня $k")
+                
             end
         end
         
@@ -295,7 +326,7 @@ function solve_centralizer(D::Derivation, max_deg::Int)
     end # кінець циклу while
 
     # 5. Повертаємо останній збережений "найкращий" результат
-    return all_found
+    return (all_res = all_found,)
 end
 
 end # module

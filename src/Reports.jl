@@ -109,4 +109,81 @@ function generate_latex_report(results, D_orig, vars, filename::String; res_type
     println(">>> Reports: LaTeX звіт '$filename' готовий ($res_type).")
 end
 
+
+
+"""
+Генерує загальний звіт для масового паралельного тестування.
+Аргументи:
+- results: Dict{Derivation, Vector} (результат ParallelSearch)
+- filename: назва .tex файлу
+- total_time: загальний час виконання (с)
+"""
+function generate_mass_report(results, filename::String, total_time::Float64)
+    open(filename, "w") do io
+        # --- ПРЕАМБУЛА ТА ШАПКА ---
+        write(io, "\\section*{Масовий аналіз централізаторів Lie-диференціювань}\n")
+        
+        # Розрахунок загальної статистики
+        total_tests = length(results)
+        unprop_count = 0
+        inv_count = 0
+        for (_, found) in results
+            unprop_count += count(s -> s.is_interesting, found)
+            inv_count += count(s -> get(s, :is_invariant, false), found)
+        end
+
+        write(io, "\\begin{tcolorbox}[colback=blue!5,colframe=blue!75,title=Метрики обчислень]\n")
+        write(io, "\\begin{tabular}{ll}\n")
+        write(io, "\\textbf{Кількість тестів:} & $total_tests \\\\\n")
+        write(io, "\\textbf{Знайдено комутаторів (\$D_u \\notin \\mathbb{K}D\$):} & \\textbf{$unprop_count} \\\\\n")
+        write(io, "\\textbf{Знайдено інваріантів (\$f \\cdot D, D(f)=0\$):} & $inv_count \\\\\n")
+        write(io, "\\hline\n")
+        write(io, "\\textbf{Загальний час:} & $(round(total_time, digits=2)) с \\\\\n")
+        write(io, "\\textbf{Сер. час на тест:} & $(round(total_time/total_tests, digits=4)) с \\\\\n")
+        write(io, "\\end{tabular}\n")
+        write(io, "\\end{tcolorbox}\n\n")
+
+        # --- ДЕТАЛЬНИЙ ВИВІД ---
+        for (D, found_list) in results
+            l_orig = "\$ D = (" * latexify(D.polys[1], env=:raw) * ")\\partial_x + (" * latexify(D.polys[2], env=:raw) * ")\\partial_y \$"
+            
+            write(io, "\\subsection*{Аналіз поля: $l_orig}\n")
+            write(io, "\\begin{itemize}[leftmargin=1cm]\n")
+
+            # 1. Секція Комутаторів (is_interesting)
+            interesting = filter(s -> s.is_interesting, found_list)
+            if !isempty(interesting)
+                write(io, "  \\item \\textbf{Централізатор (непропорційні):}\n")
+                write(io, "    \\begin{itemize}\n")
+                for s in interesting
+                    write(io, "      \\item \$ D_u = ($(latexify(s.polys[1], env=:raw)))\\partial_x + ($(latexify(s.polys[2], env=:raw)))\\partial_y \$ (k=$(s.degree))\n")
+                end
+                write(io, "    \\end{itemize}\n")
+            end
+
+            # 2. Секція Інваріантних кратних (is_invariant)
+            invariants = filter(s -> get(s, :is_invariant, false), found_list)
+            if !isempty(invariants)
+                write(io, "  \\item \\textbf{Інваріантні кратні (\$f \\cdot D, D(f)=0\$):}\n")
+                write(io, "    \\begin{itemize}\n")
+                for s in invariants
+                    write(io, "      \\item \$ D_u = ($(latexify(s.polys[1], env=:raw)))\\partial_x + ($(latexify(s.polys[2], env=:raw)))\\partial_y \$ (k=$(s.degree))\n")
+                end
+                write(io, "    \\end{itemize}\n")
+            end
+
+            # 3. Базовий випадок (пропорційне k=deg)
+            base = filter(s -> !s.is_interesting && !get(s, :is_invariant, false), found_list)
+            if !isempty(base)
+                write(io, "  \\item \\textit{Базове поле \$D\$ підтверджено на k=$(base[1].degree).}\n")
+            end
+
+            write(io, "\\end{itemize}\n")
+            write(io, "\\hrulefill\n")
+        end
+    end
+end
+
+
+
 end # module

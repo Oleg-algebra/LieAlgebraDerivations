@@ -1,0 +1,141 @@
+\section*{Масовий аналіз централізаторів Lie-диференціювань}
+\begin{tcolorbox}[colback=blue!5,colframe=blue!75,title=Метрики обчислень]
+\begin{tabular}{ll}
+\textbf{Кількість тестів:} & 10 \\
+\textbf{Знайдено комутаторів ($D_u \notin \mathbb{K}D$):} & \textbf{15} \\
+\textbf{Знайдено інваріантів ($f \cdot D, D(f)=0$):} & 44 \\
+\hline
+\textbf{Загальний час:} & 8.99 с \\
+\textbf{Сер. час на тест:} & 0.8986 с \\
+\end{tabular}
+\end{tcolorbox}
+
+\subsection*{Аналіз поля: $ D = ( - 3 ~ y^{3})\partial_x + (y^{4} ~ x^{3})\partial_y $}
+\begin{itemize}[leftmargin=1cm]
+  \item \textbf{Інваріантні кратні ($f \cdot D, D(f)=0$):}
+    \begin{itemize}
+      \item $ D_u = ( - 3 ~ y^{3})\partial_x + (y^{4} ~ x^{3})\partial_y $ (k=7)
+      \item $ D_u = ( - 3 ~ y^{3})\partial_x + (y^{4} ~ x^{3})\partial_y $ (k=8)
+      \item $ D_u = ( - 3 ~ y^{3})\partial_x + (y^{4} ~ x^{3})\partial_y $ (k=9)
+      \item $ D_u = ( - 3 ~ y^{3})\partial_x + (y^{4} ~ x^{3})\partial_y $ (k=10)
+    \end{itemize}
+\end{itemize}
+\hrulefill
+\subsection*{Аналіз поля: $ D = ( - 6 ~ y^{2} ~ x^{3})\partial_x + ( - 2 ~ y^{4} ~ x)\partial_y $}
+\begin{itemize}[leftmargin=1cm]
+  \item \textbf{Інваріантні кратні ($f \cdot D, D(f)=0$):}
+    \begin{itemize}
+      \item $ D_u = ( - 3 ~ x^{3} ~ y + y^{2} ~ x^{2})\partial_x + ( - y^{3} ~ x + \frac{1}{3} ~ y^{4})\partial_y $ (k=4)
+      \item $ D_u = ( - 3 ~ x^{3} ~ y + y^{2} ~ x^{2})\partial_x + ( - y^{3} ~ x + \frac{1}{3} ~ y^{4})\partial_y $ (k=5)
+      \item $ D_u = ( - 3 ~ x^{3} ~ y + y^{2} ~ x^{2})\partial_x + ( - y^{3} ~ x + \frac{1}{3} ~ y^{4})\partial_y $ (k=6)
+      \item $ D_u = ( - 3 ~ x^{3} ~ y + y^{2} ~ x^{2})\partial_x + ( - y^{3} ~ x + \frac{1}{3} ~ y^{4})\partial_y $ (k=7)
+      \item $ D_u = ( - 3 ~ x^{3} ~ y + y^{2} ~ x^{2})\partial_x + ( - y^{3} ~ x + \frac{1}{3} ~ y^{4})\partial_y $ (k=8)
+      \item $ D_u = ( - 3 ~ x^{3} ~ y + y^{2} ~ x^{2})\partial_x + ( - y^{3} ~ x + \frac{1}{3} ~ y^{4})\partial_y $ (k=9)
+      \item $ D_u = ( - 3 ~ x^{3} ~ y + y^{2} ~ x^{2})\partial_x + ( - y^{3} ~ x + \frac{1}{3} ~ y^{4})\partial_y $ (k=10)
+    \end{itemize}
+\end{itemize}
+\hrulefill
+\subsection*{Аналіз поля: $ D = (2 ~ y^{2} ~ x^{5})\partial_x + (9 ~ y^{3} ~ x^{5})\partial_y $}
+\begin{itemize}[leftmargin=1cm]
+  \item \textbf{Інваріантні кратні ($f \cdot D, D(f)=0$):}
+    \begin{itemize}
+      \item $ D_u = (\frac{2}{9} ~ y^{2} ~ x^{5})\partial_x + (y^{3} ~ x^{5})\partial_y $ (k=8)
+      \item $ D_u = (\frac{2}{9} ~ y^{2} ~ x^{5})\partial_x + (y^{3} ~ x^{5})\partial_y $ (k=9)
+      \item $ D_u = (\frac{2}{9} ~ y^{2} ~ x^{5})\partial_x + (y^{3} ~ x^{5})\partial_y $ (k=10)
+    \end{itemize}
+\end{itemize}
+\hrulefill
+\subsection*{Аналіз поля: $ D = ( - 2 ~ y^{3} ~ x)\partial_x + (2 ~ y^{2} ~ x^{3})\partial_y $}
+\begin{itemize}[leftmargin=1cm]
+  \item \textbf{Інваріантні кратні ($f \cdot D, D(f)=0$):}
+    \begin{itemize}
+      \item $ D_u = ( - y^{3} ~ x)\partial_x + (y^{2} ~ x^{3})\partial_y $ (k=5)
+      \item $ D_u = ( - y^{3} ~ x)\partial_x + (y^{2} ~ x^{3})\partial_y $ (k=6)
+      \item $ D_u = ( - y^{3} ~ x)\partial_x + (y^{2} ~ x^{3})\partial_y $ (k=7)
+      \item $ D_u = (\frac{3}{2} ~ y^{5} ~ x + y^{3} ~ x^{4})\partial_x + ( - \frac{3}{2} ~ y^{4} ~ x^{3} - y^{2} ~ x^{6})\partial_y $ (k=8)
+      \item $ D_u = (\frac{3}{2} ~ y^{5} ~ x + y^{3} ~ x^{4})\partial_x + ( - \frac{3}{2} ~ y^{4} ~ x^{3} - y^{2} ~ x^{6})\partial_y $ (k=9)
+      \item $ D_u = (\frac{3}{2} ~ y^{5} ~ x + y^{3} ~ x^{4})\partial_x + ( - \frac{3}{2} ~ y^{4} ~ x^{3} - y^{2} ~ x^{6})\partial_y $ (k=10)
+    \end{itemize}
+\end{itemize}
+\hrulefill
+\subsection*{Аналіз поля: $ D = (7 ~ x^{5} ~ y)\partial_x + ( - 5 ~ y^{4} ~ x^{2})\partial_y $}
+\begin{itemize}[leftmargin=1cm]
+  \item \textbf{Інваріантні кратні ($f \cdot D, D(f)=0$):}
+    \begin{itemize}
+      \item $ D_u = ( - \frac{7}{5} ~ x^{5} ~ y)\partial_x + (y^{4} ~ x^{2})\partial_y $ (k=6)
+      \item $ D_u = ( - \frac{7}{5} ~ x^{5} ~ y)\partial_x + (y^{4} ~ x^{2})\partial_y $ (k=7)
+      \item $ D_u = ( - \frac{7}{5} ~ x^{5} ~ y)\partial_x + (y^{4} ~ x^{2})\partial_y $ (k=8)
+      \item $ D_u = ( - \frac{7}{5} ~ x^{5} ~ y)\partial_x + (y^{4} ~ x^{2})\partial_y $ (k=9)
+      \item $ D_u = ( - \frac{7}{5} ~ x^{5} ~ y)\partial_x + (y^{4} ~ x^{2})\partial_y $ (k=10)
+    \end{itemize}
+\end{itemize}
+\hrulefill
+\subsection*{Аналіз поля: $ D = ( - 4 ~ x^{5} ~ y)\partial_x + ( - y^{2} ~ x^{5})\partial_y $}
+\begin{itemize}[leftmargin=1cm]
+  \item \textbf{Інваріантні кратні ($f \cdot D, D(f)=0$):}
+    \begin{itemize}
+      \item $ D_u = (4 ~ x^{5} ~ y)\partial_x + (y^{2} ~ x^{5})\partial_y $ (k=7)
+      \item $ D_u = (4 ~ x^{5} ~ y)\partial_x + (y^{2} ~ x^{5})\partial_y $ (k=8)
+      \item $ D_u = (4 ~ x^{5} ~ y)\partial_x + (y^{2} ~ x^{5})\partial_y $ (k=9)
+      \item $ D_u = (4 ~ x^{5} ~ y)\partial_x + (y^{2} ~ x^{5})\partial_y $ (k=10)
+    \end{itemize}
+\end{itemize}
+\hrulefill
+\subsection*{Аналіз поля: $ D = ( - 2 ~ y^{3})\partial_x + (4 ~ y^{2} ~ x^{3})\partial_y $}
+\begin{itemize}[leftmargin=1cm]
+  \item \textbf{Інваріантні кратні ($f \cdot D, D(f)=0$):}
+    \begin{itemize}
+      \item $ D_u = ( - \frac{1}{2} ~ y^{3})\partial_x + (y^{2} ~ x^{3})\partial_y $ (k=5)
+      \item $ D_u = ( - \frac{1}{2} ~ y^{3})\partial_x + (y^{2} ~ x^{3})\partial_y $ (k=6)
+      \item $ D_u = ( - \frac{1}{2} ~ y^{3})\partial_x + (y^{2} ~ x^{3})\partial_y $ (k=7)
+      \item $ D_u = ( - \frac{1}{2} ~ y^{3})\partial_x + (y^{2} ~ x^{3})\partial_y $ (k=8)
+      \item $ D_u = (y^{5} + y^{3} ~ x^{4})\partial_x + ( - 2 ~ y^{4} ~ x^{3} - 2 ~ y^{2} ~ x^{7})\partial_y $ (k=9)
+      \item $ D_u = (y^{5} + y^{3} ~ x^{4})\partial_x + ( - 2 ~ y^{4} ~ x^{3} - 2 ~ y^{2} ~ x^{7})\partial_y $ (k=10)
+    \end{itemize}
+\end{itemize}
+\hrulefill
+\subsection*{Аналіз поля: $ D = ( - 7 ~ y^{2} ~ x^{5})\partial_x + (6 ~ x^{5} ~ y)\partial_y $}
+\begin{itemize}[leftmargin=1cm]
+  \item \textbf{Інваріантні кратні ($f \cdot D, D(f)=0$):}
+    \begin{itemize}
+      \item $ D_u = ( - \frac{7}{6} ~ y^{2} ~ x^{5})\partial_x + (x^{5} ~ y)\partial_y $ (k=7)
+      \item $ D_u = ( - \frac{7}{6} ~ y^{2} ~ x^{5})\partial_x + (x^{5} ~ y)\partial_y $ (k=8)
+      \item $ D_u = (y^{2} ~ x^{6} + \frac{7}{12} ~ y^{4} ~ x^{5})\partial_x + ( - \frac{6}{7} ~ x^{6} ~ y - \frac{1}{2} ~ y^{3} ~ x^{5})\partial_y $ (k=9)
+      \item $ D_u = (y^{2} ~ x^{6} + \frac{7}{12} ~ y^{4} ~ x^{5})\partial_x + ( - \frac{6}{7} ~ x^{6} ~ y - \frac{1}{2} ~ y^{3} ~ x^{5})\partial_y $ (k=10)
+    \end{itemize}
+\end{itemize}
+\hrulefill
+\subsection*{Аналіз поля: $ D = ( - 7 ~ x^{5})\partial_x + ( - 3 ~ y^{2})\partial_y $}
+\begin{itemize}[leftmargin=1cm]
+  \item \textbf{Централізатор (непропорційні):}
+    \begin{itemize}
+      \item $ D_u = (0)\partial_x + (y^{2})\partial_y $ (k=2)
+      \item $ D_u = (0)\partial_x + (y^{2})\partial_y $ (k=3)
+      \item $ D_u = (0)\partial_x + (y^{2})\partial_y $ (k=4)
+      \item $ D_u = (x^{5})\partial_x + (0)\partial_y $ (k=5)
+      \item $ D_u = (0)\partial_x + (y^{2})\partial_y $ (k=5)
+      \item $ D_u = (x^{5})\partial_x + (0)\partial_y $ (k=6)
+      \item $ D_u = (0)\partial_x + (y^{2})\partial_y $ (k=6)
+      \item $ D_u = (x^{5})\partial_x + (0)\partial_y $ (k=7)
+      \item $ D_u = (0)\partial_x + (y^{2})\partial_y $ (k=7)
+      \item $ D_u = (x^{5})\partial_x + (0)\partial_y $ (k=8)
+      \item $ D_u = (0)\partial_x + (y^{2})\partial_y $ (k=8)
+      \item $ D_u = (x^{5})\partial_x + (0)\partial_y $ (k=9)
+      \item $ D_u = (0)\partial_x + (y^{2})\partial_y $ (k=9)
+      \item $ D_u = (x^{5})\partial_x + (0)\partial_y $ (k=10)
+      \item $ D_u = (0)\partial_x + (y^{2})\partial_y $ (k=10)
+    \end{itemize}
+\end{itemize}
+\hrulefill
+\subsection*{Аналіз поля: $ D = (8 ~ x^{4} ~ y)\partial_x + ( - 2 ~ y^{5} ~ x)\partial_y $}
+\begin{itemize}[leftmargin=1cm]
+  \item \textbf{Інваріантні кратні ($f \cdot D, D(f)=0$):}
+    \begin{itemize}
+      \item $ D_u = ( - 4 ~ x^{4} ~ y)\partial_x + (y^{5} ~ x)\partial_y $ (k=6)
+      \item $ D_u = ( - 4 ~ x^{4} ~ y)\partial_x + (y^{5} ~ x)\partial_y $ (k=7)
+      \item $ D_u = ( - 4 ~ x^{4} ~ y)\partial_x + (y^{5} ~ x)\partial_y $ (k=8)
+      \item $ D_u = ( - 4 ~ x^{4} ~ y)\partial_x + (y^{5} ~ x)\partial_y $ (k=9)
+      \item $ D_u = ( - 4 ~ x^{4} ~ y)\partial_x + (y^{5} ~ x)\partial_y $ (k=10)
+    \end{itemize}
+\end{itemize}
+\hrulefill
