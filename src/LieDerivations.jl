@@ -5,8 +5,9 @@ using LinearAlgebra
 using SparseArrays
 using RowEchelon
 
+include("Reports.jl")
 
-export Derivation, apply_derivation, lie_bracket, solve_centralizer
+export Reports,Derivation, apply_derivation, lie_bracket, solve_centralizer
 
 # Структура для диференціювання в W_n(K)
 struct Derivation
