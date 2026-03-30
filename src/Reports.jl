@@ -55,13 +55,19 @@ function generate_latex_report(results, D_orig, vars, filename::String; res_type
     
     final_selection = []
     if !isempty(candidates)
-        all_degs = [c.sum_deg for c in candidates]
-        target = (res_type == "min") ? minimum(all_degs) : maximum(all_degs)
-        final_selection = filter(c -> c.sum_deg == target, candidates)
+        if res_type == "all"
+            # Повертаємо всі знайдені кандидати без врахування степеня
+            final_selection = candidates
+        else
+            # Стара логіка для відбору за екстремальним степенем
+            all_degs = [c.sum_deg for c in candidates]
+            target = (res_type == "min") ? minimum(all_degs) : maximum(all_degs)
+            final_selection = filter(c -> c.sum_deg == target, candidates)
+        end
     end
 
     # 3. Запис у LaTeX
-    open(filename, "a") do io
+    open(filename, "w") do io
         write(io, "%% Звіт згенеровано модулем Reports.jl\n")
         write(io, "%% Дата: $(Dates.format(now(), "yyyy-mm-dd HH:MM:SS"))\n\n")
         
@@ -135,7 +141,7 @@ function generate_mass_report(results, filename::String, total_time::Float64)
         write(io, "\\begin{tcolorbox}[colback=blue!5,colframe=blue!75,title=Метрики обчислень]\n")
         write(io, "\\begin{tabular}{ll}\n")
         write(io, "\\textbf{Кількість тестів:} & $total_tests \\\\\n")
-        write(io, "\\textbf{Знайдено комутаторів (\$D_u \\notin \\mathbb{K}D\$):} & \\textbf{$unprop_count} \\\\\n")
+        write(io, "\\textbf{Знайдено комутаторів (\$D_u \\notin \\mathbb{K}[x,y]D\$):} & \\textbf{$unprop_count} \\\\\n")
         write(io, "\\textbf{Знайдено інваріантів (\$f \\cdot D, D(f)=0\$):} & $inv_count \\\\\n")
         write(io, "\\hline\n")
         write(io, "\\textbf{Загальний час:} & $(round(total_time, digits=2)) с \\\\\n")

@@ -176,14 +176,30 @@ end
 
 function is_already_found(new_polys, current_k, all_found)
     for existing in all_found
-        # Перевірка на пропорційність через перехресне множення
+        # 1. Перевірка на пропорційність (чи лежать вони на одній "лінії")
+        # P1*Q2 - P2*Q1
         diff = simplify(new_polys[1] * existing.polys[2] - new_polys[2] * existing.polys[1])
-        
         if iszero(diff)
-            # Якщо пропорційні і степінь не більший за вже знайдений — це дублікат
-            if current_k <= existing.degree
+            # 2. Якщо вони пропорційні, з'ясовуємо коефіцієнт f = New / Existing
+            # Вибираємо ненульову компоненту для ділення
+            idx = !iszero(existing.polys[1]) ? 1 : 2
+            # Якщо обидві компоненти існуючого нульові (не повинно бути), пропускаємо
+            if iszero(existing.polys[idx]) continue end
+            
+            # Обчислюємо відношення
+            f = simplify(new_polys[idx] / existing.polys[idx])
+            # 3. ПЕРЕВІРКА НА ДУБЛІКАТ:
+            # 3. НАДІЙНА ПЕРЕВІРКА НА КОНСТАНТУ:
+            # Якщо у виразі f немає змінних (x, y...), то f — це число.
+            vars_in_f = Symbolics.get_variables(f)
+            is_constant = isempty(vars_in_f) && (f isa Number || f isa Symbolic || f isa Num)
+            
+            if is_constant
                 return true
             end
+            # Якщо f — це поліном (не константа), то це новий результат
+            # (наприклад, інваріантне кратне f*D), тому ми НЕ повертаємо true
+            # і даємо циклу продовжитись або вийти в false.
         end
     end
     return false

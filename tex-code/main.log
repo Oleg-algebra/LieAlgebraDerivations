@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.19)  23 MAR 2026 21:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.11.19)  30 MAR 2026 17:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1302,138 +1302,32 @@ Package hyperref Info: Link coloring OFF on input line 45.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \c@lstlisting=\count371
-(./results.tex
-Underfull \hbox (badness 10000) in paragraph at lines 3--4
+(./centralizer_report.tex
+LaTeX Font Info:    Trying to load font information for U+msa on input line 6.
 
- []
-
-LaTeX Font Info:    Trying to load font information for U+msa on input line 7.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 7.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 6.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 7.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 6.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-Underfull \hbox (badness 10000) in paragraph at lines 16--18
+Underfull \hbox (badness 10000) in paragraph at lines 23--25
 
  []
 
-) (./centralizer_report.tex
-Underfull \hbox (badness 10000) in paragraph at lines 19--21
-
- []
-
-[1
+) (./mass_report.tex [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf/fonts/enc/
 dvips/cm-super/cm-super-t2a.enc}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-s
-uper-ts1.enc}]
-Underfull \hbox (badness 10000) in paragraph at lines 51--53
-
- []
-
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 84--86
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 118--120
-
- []
-
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 152--154
-
- []
-
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 186--188
-
- []
-
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 240--242
-
- []
-
-[6]
-Overfull \hbox (11.17778pt too wide) in paragraph at lines 287--292
- [][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 294--296
-
- []
-
-[7] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 358--360
-
- []
-
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 396--398
-
- []
-
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 434--436
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 462--464
-
- []
-
-[11]
-Underfull \hbox (badness 10000) in paragraph at lines 490--492
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 518--520
-
- []
-
-[12]
-Underfull \hbox (badness 10000) in paragraph at lines 545--547
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 572--574
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 599--601
-
- []
-
-[13]
-Underfull \hbox (badness 10000) in paragraph at lines 628--630
-
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 660--662
-
- []
-
-[14]) (./mass_report.tex [15] [16] [17]) [18] (./main.aux)
+uper-ts1.enc}] [2]) [3] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -1442,13 +1336,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 34652 strings out of 474222
- 721369 string characters out of 5748732
- 1944975 words of memory out of 5000000
- 56236 multiletter control sequences out of 15000+600000
- 573480 words of font info for 82 fonts, out of 8000000 for 9000
+ 34570 strings out of 474222
+ 720513 string characters out of 5748732
+ 1942975 words of memory out of 5000000
+ 56231 multiletter control sequences out of 15000+600000
+ 572610 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,16n,107p,541b,674s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,16n,107p,541b,662s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texl
@@ -1457,15 +1351,15 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx12
-00.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/t
-exmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/pub
-lic/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti120
-0.pfb>
-Output written on main.pdf (18 pages, 209946 bytes).
+msfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb>
+</usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fo
+nts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-
+super/sfrm1200.pfb>
+Output written on main.pdf (3 pages, 164045 bytes).
 PDF statistics:
- 291 PDF objects out of 1000 (max. 8388607)
- 215 compressed objects within 3 object streams
- 91 named destinations out of 1000 (max. 500000)
+ 152 PDF objects out of 1000 (max. 8388607)
+ 93 compressed objects within 1 object stream
+ 18 named destinations out of 1000 (max. 500000)
  157 words of extra memory for PDF output out of 10000 (max. 10000000)
 

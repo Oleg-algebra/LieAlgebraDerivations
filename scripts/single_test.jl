@@ -39,7 +39,7 @@ if !isempty(res_data.all_res)
         D_orig, 
         vars, 
         filename; 
-        res_type = "min"
+        res_type = "all"
     )
     println(">>> Звіт успішно збережено.")
 else
