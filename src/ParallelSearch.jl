@@ -1,39 +1,33 @@
 module ParallelSearch
 
-using Distributed
-using ..LieDerivations # Звернення до батьківського модуля
-using Symbolics
+using ..LieDerivations
+using ThreadsX # Потрібно додати через Pkg.add("ThreadsX")
 
-export run_parallel_tests
+export run_threaded_tests
 
 """
-Функція для паралельного пошуку централізаторів.
-Аргументи:
-- generator_func: функція без аргументів, що повертає об'єкт Derivation
-- total_tests: загальна кількість диференціювань, які треба дослідити
-- max_k: максимальний степінь пошуку для кожного теста
+Функція для багатопотокового пошуку централізаторів (економія RAM).
 """
-function run_parallel_tests(generator_func::Function, total_tests::Int, max_k::Int)
-    println(">>> Запуск паралельного пошуку: $total_tests тестів на $(nworkers()) воркерах.")
+function run_threaded_tests(generator_func::Function, total_tests::Int, max_k::Int)
+    println(">>> Запуск потокового пошуку: $total_tests тестів на $(Threads.nthreads()) потоках.")
     
-    # Створюємо масив завдань (просто індекси)
     tasks = 1:total_tests
 
-    # pmap автоматично розподіляє завдання між воркерами
-    # Кожен воркер виконує анонімну функцію
-    results_list = pmap(tasks) do i
-        # 1. Генеруємо випадкове диференціювання
+    # ThreadsX.map працює аналогічно до pmap, але в межах одного процесу
+    results_list = ThreadsX.map(tasks) do i
         D_rand = generator_func()
-        
-        # 2. Шукаємо централізатор (solve_centralizer має повертати NamedTuple з all_found)
-        # Припускаємо, що solve_centralizer повертає (all_found=..., is_valid=...)
+        # Викликаємо ваш стандартний solve_centralizer
         search_res = solve_centralizer(D_rand, max_k)
         
-        # 3. Повертаємо пару: Диференціювання => Його знайдені комутатори
+        if i % 10 == 0
+            println("Thread $(Threads.threadid()): Оброблено $i тестів...")
+        end
+
+        # Повертаємо пару для формування словника
         return D_rand => search_res.all_res
     end
 
-    # Перетворюємо список пар у словник для зручного доступу
+    # Перетворюємо масив пар у словник
     return Dict(results_list)
 end
 

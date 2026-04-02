@@ -1,23 +1,14 @@
-using Distributed
+using Pkg
+Pkg.activate(".")
 
-# Додаємо воркерів (наприклад, 4 ядра)
-if nprocs() == 1
-    addprocs(2) 
-end
+using LieDerivations
+using .LieDerivations.ParallelSearch
+using Symbolics
 
-@everywhere begin
-    using Pkg
-    Pkg.activate(".")
-    using LieDerivations
-    using .LieDerivations.ParallelSearch
-    using Symbolics
-end
-
-# 1. Визначаємо функцію-генератор (наприклад, випадкові мономи)
-@everywhere function my_generator()
+# 1. Визначаємо функцію-генератор (тепер просто звичайна функція)
+function my_generator()
     @variables x y
     vars = [x, y]
-    # Випадкові степені від 0 до 5
     powers = rand(0:5, 4) 
     coeffs = rand(-10:10, 2)
     
@@ -27,18 +18,21 @@ end
     return Derivation([P1, P2], vars)
 end
 
-println("Початок паралельного аналізу на $(nworkers()) воркерах...")
+# Налаштування параметрів
+total_number_of_tests = 100
+max_degree_K = 5
 
-# 2. Запускаємо масовий тест
-# Знайдемо централізатори для 50 випадкових диференціювань до степеня k=5
+println("Початок потокового аналізу на $(Threads.nthreads()) потоках...")
+
+# 2. Запуск масового тесту з заміром часу
 t_start = time()
 
-# Запуск масового тесту
-all_results = ParallelSearch.run_parallel_tests(my_generator, 10, 10)
+# Використовуємо нову функцію run_threaded_tests
+all_results = ParallelSearch.run_threaded_tests(my_generator, total_number_of_tests, max_degree_K)
 
 total_exec_time = time() - t_start
 
-# 3. Аналіз результатів
+# 3. Швидкий аналіз результатів у консолі
 println("\nЗнайдено нетривіальних рішень:")
 for (D, found) in all_results
     interesting = filter(f -> f.is_interesting, found)
@@ -47,10 +41,8 @@ for (D, found) in all_results
     end
 end
 
-
-
-# Генеруємо фінальний звіт
-println("Формування звіту...")
+# 4. Формування LaTeX звіту
+println("\nФормування звіту...")
 Reports.generate_mass_report(all_results, "tex-code/mass_report.tex", total_exec_time)
 
 println("Готово. Звіт збережено в 'tex-code/mass_report.tex'")

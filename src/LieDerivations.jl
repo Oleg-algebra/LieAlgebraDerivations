@@ -188,6 +188,8 @@ function is_already_found(new_polys, current_k, all_found)
             
             # Обчислюємо відношення
             f = simplify(new_polys[idx] / existing.polys[idx])
+            
+
             # 3. ПЕРЕВІРКА НА ДУБЛІКАТ:
             # 3. НАДІЙНА ПЕРЕВІРКА НА КОНСТАНТУ:
             # Якщо у виразі f немає змінних (x, y...), то f — це число.
@@ -219,7 +221,7 @@ function solve_centralizer(D::Derivation, max_deg::Int)
     all_found = []
     
     while k <= max_deg
-        println("\n>>> Перевірка степеня k = $k")
+        # println("\n>>> Перевірка степеня k = $k")
         
         # 1. Генерація невідомих
         coeffs = Num[]
@@ -270,16 +272,16 @@ function solve_centralizer(D::Derivation, max_deg::Int)
         # Аналіз розрідженості
         non_zeros = nnz(A_sparse)
         sparsity_percent = (1 - non_zeros / (rows_dim * cols_dim)) * 100
-        println("Розмірність: $rows_dim x $cols_dim, nnz: $non_zeros")
-        println("Розрідженість: $(round(sparsity_percent, digits=2))%")
+        # println("Розмірність: $rows_dim x $cols_dim, nnz: $non_zeros")
+        # println("Розрідженість: $(round(sparsity_percent, digits=2))%")
         
         # 6. Адаптивне знаходження ядра
         local ns
         if sparsity_percent > sparsity_threshold
-            println("Метод: СПРАВЖНІЙ РОЗРІДЖЕНИЙ")
+            # println("Метод: СПРАВЖНІЙ РОЗРІДЖЕНИЙ")
             ns = exact_sparse_nullspace(A_sparse)
         else
-            println("Метод: КЛАСИЧНИЙ (DENSE)")
+            # println("Метод: КЛАСИЧНИЙ (DENSE)")
             ns = exact_nullspace(A_numeric_clean)
         end
         # println("result obtained, analyzing...")
